@@ -8,7 +8,8 @@ def test_good():
     # Label is a property of the nltk.classify.NaiveBayesClassifier class which
     # is not the same class textblob.classifiers.NaiveBayesClassifier.
     # Notice how the lookup for a labels() property does not fail, however, due
-    # to the implementation of the latter.
+    # to the implementation of the latter as a subclass of an abstract class
+    # exposing such a method.
     #
     # See: https://github.com/nltk/nltk/blob/develop/nltk/classify/naivebayes.py
     # , from line 43;
