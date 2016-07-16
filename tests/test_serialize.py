@@ -1,4 +1,3 @@
-import pytest
 import categorize.classifierSerializer
 from utils.mock_classifier import get_mock
 from textblob.classifiers import NaiveBayesClassifier
