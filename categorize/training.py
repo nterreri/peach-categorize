@@ -9,5 +9,6 @@ def train(train_set):
     Trains a classifier over the train_set data
 
     '''
+
     classifier = textblob.classifiers.NaiveBayesClassifier(train_set)
     return classifier
