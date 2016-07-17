@@ -34,8 +34,6 @@ def demo(args):
     # classifier = deserialize()
     # return classifier
 
-
-
 if __name__ == '__main__':
     import sys
     demo(sys.argv)
