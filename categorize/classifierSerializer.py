@@ -1,5 +1,7 @@
 '''
 Module responsible for serializing and writing the classifier to file.
+
+See: http://stackoverflow.com/questions/10017086/save-naive-bayes-trained-classifier-in-nltk
 '''
 import pickle
 
