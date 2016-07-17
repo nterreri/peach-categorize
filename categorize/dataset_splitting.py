@@ -1,6 +1,8 @@
 '''
 Module responsible for splitting a laballed dataset into train, dev and test
 sets.
+
+See 1.2 in: http://www.nltk.org/book/ch06.html
 '''
 import random
 

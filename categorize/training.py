@@ -4,11 +4,10 @@ Module responsible for the training of a categorizer.
 '''
 import textblob.classifiers
 
-def train(datafilepath="categorize/data/sample_data.csv"):
+def train(train_set):
     '''
-    Trains a classifier over the data at the filepath.
-    Assumes file format is csv.
+    Trains a classifier over the train_set data
+
     '''
-    with open(datafilepath, 'r') as istream:
-        classifier = textblob.classifiers.NaiveBayesClassifier(istream, format="csv")
+    classifier = textblob.classifiers.NaiveBayesClassifier(train_set)
     return classifier
