@@ -1,6 +1,6 @@
 from textblob.classifiers import NaiveBayesClassifier
 
-train = [('I love this sandwich.', 'pos'),
+data = [('I love this sandwich.', 'pos'),
      ('this is an amazing place!', 'pos'),
      ('I feel very good about these beers.', 'pos'),
      ('this is my best work.', 'pos'),
@@ -12,4 +12,4 @@ train = [('I love this sandwich.', 'pos'),
      ('my boss is horrible.', 'neg')]
 
 def get_mock():
-    return NaiveBayesClassifier(train)
+    return NaiveBayesClassifier(data)
