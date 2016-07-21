@@ -11,6 +11,7 @@ DATAFILE="categorize/data/sample_data.csv"
 FORMAT="csv"
 OUTPUTFILE = "categorize/data/classifier.pickle"
 LABELS = ["pos", "neg"]
+
 def demo(args):
 
     with open(DATAFILE, 'r') as istream:
@@ -43,9 +44,9 @@ def demo(args):
         precision_score = evaluator.precision(label)
         fmeasure_score = evaluator.f_measure(label)
 
-        print "Recall for '{}': {:.2f}".format(label, recall_score)
-        print "Precision for '{}': {:.2f}".format(label, precision_score)
-        print "F for '{}': {:.2f}".format(label, fmeasure_score)
+        print "Recall for '{}': {}".format(label, recall_score)#{:.2f}".format(label, recall_score)
+        print "Precision for '{}': {}".format(label, precision_score)#{:.2f}".format(label, precision_score)
+        print "F for '{}': {}".format(label, fmeasure_score)#{:.2f}".format(label, fmeasure_score)
 
 if __name__ == '__main__':
     import sys

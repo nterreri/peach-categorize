@@ -6,10 +6,10 @@ from nltk.metrics import scores
 
 class ClassifierEvaluator:
 
-    _classifier = None
-    _gold = None
-    _reference_sets = collections.defaultdict(set)
-    _test_sets = collections.defaultdict(set)
+    # _classifier = None
+    # _gold = None
+    # _reference_sets = collections.defaultdict(set)
+    # _test_sets = collections.defaultdict(set)
 
     def __init__(self, classifier, gold):
         self._classifier = classifier
