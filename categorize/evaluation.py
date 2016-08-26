@@ -4,12 +4,7 @@ Evaluates a classifier against a test set.
 import collections
 from nltk.metrics import scores
 
-class ClassifierEvaluator:
-
-    # _classifier = None
-    # _gold = None
-    # _reference_sets = collections.defaultdict(set)
-    # _test_sets = collections.defaultdict(set)
+class ClassifierEvaluator(object):
 
     def __init__(self, classifier, gold):
         self._classifier = classifier
@@ -47,3 +42,19 @@ class ClassifierEvaluator:
 
     def accuracy(self):
         return self._classifier.accuracy(self._gold)
+
+    def macroAvgPrecision(self, labels):
+        sumPrecisions = 0
+        for label in labels:
+            sumPrecisions = sumPrecisions + self.precision(label)
+
+        if len(labels) > 0:
+            return sumPrecisions / len(labels)
+
+    def macroAvgRecall(self, labels):
+        sumPrecisions = 0
+        for label in labels:
+            sumPrecisions = sumPrecisions + self.recall(label)
+
+        if len(labels) > 0:
+            return sumPrecisions / len(labels)
