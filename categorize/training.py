@@ -10,5 +10,5 @@ def train(train_set):
 
     '''
 
-    classifier = textblob.classifiers.MaxEntClassifier(train_set)
+    classifier = textblob.classifiers.NaiveBayesClassifier(train_set)
     return classifier

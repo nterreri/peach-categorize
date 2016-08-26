@@ -9,7 +9,7 @@ class ClassifierEvaluator(object):
     def __init__(self, classifier, gold):
         self._classifier = classifier
         self._gold = gold
-        self._reference_sets, self._test_sets = \
+        self._referenceSets, self._testSets = \
                             self._get_reference_and_test_sets(classifier, gold)
 
     def _get_reference_and_test_sets(self, classifier, test):
@@ -29,32 +29,49 @@ class ClassifierEvaluator(object):
         return reference_sets, test_sets
 
     def precision(self, label):
-        return scores.precision(self._reference_sets[label], \
-                                self._test_sets[label])
+        return scores.precision(self._referenceSets[label], \
+                                self._testSets[label])
 
     def recall(self, label):
-        return scores.recall(self._reference_sets[label], \
-                            self._test_sets[label])
+        return scores.recall(self._referenceSets[label], \
+                            self._testSets[label])
 
     def f_measure(self, label, alpha=0.5):
-        return scores.f_measure(self._reference_sets[label], \
-                                self._test_sets[label], alpha)
+        return scores.f_measure(self._referenceSets[label], \
+                                self._testSets[label], alpha)
 
     def accuracy(self):
         return self._classifier.accuracy(self._gold)
 
     def macroAvgPrecision(self, labels):
-        sumPrecisions = 0
-        for label in labels:
-            sumPrecisions = sumPrecisions + self.precision(label)
-
-        if len(labels) > 0:
-            return sumPrecisions / len(labels)
+        return self._macroAvg(labels, self.precision)
 
     def macroAvgRecall(self, labels):
-        sumPrecisions = 0
+        return self._macroAvg(labels, self.recall)
+
+    def _macroAvg(self, labels, function):
+        sumScores = 0
         for label in labels:
-            sumPrecisions = sumPrecisions + self.recall(label)
+            sumScores = sumScores + function(label)
 
         if len(labels) > 0:
-            return sumPrecisions / len(labels)
+            return sumScores / len(labels)
+
+    def microAvgPrecision(self, labels):
+        return self._microAvg(labels, self._testSets)
+
+    def microAvgRecall(self, labels):
+        return self._microAvg(labels, self._referenceSets)
+
+    def _microAvg(self, labels, denominatorSets):
+        numerator = 0
+        denominator = 0
+
+        for label in labels:
+            numerator = numerator + len(self._referenceSets[label].intersection(self._testSets[label]))
+            denominator = denominator + len(denominatorSets[label])
+
+        if denominator > 0:
+            return numerator / float(denominator)
+        else:
+            return 0

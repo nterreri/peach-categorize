@@ -28,11 +28,29 @@ def test_macroavgrecall():
     evaluator = ClassifierEvaluator(classifier, mock_classifier.test)
     avgRecall = evaluator.macroAvgRecall(LABELS)
 
-    print avgRecall
     assert avgRecall is not None
     assert _isProbabilityMeasure(avgRecall)
     assert 0.833 == round(avgRecall, 3)
 
+
+def test_microaverageprecision():
+    classifier = mock_classifier.get_mock()
+    evaluator = ClassifierEvaluator(classifier, mock_classifier.test)
+    avgPrecision = evaluator.microAvgPrecision(LABELS)
+
+    assert avgPrecision is not None
+    assert _isProbabilityMeasure(avgPrecision)
+    assert 0.833 == round(avgPrecision, 3)
+
+def test_microaveragerecall():
+    classifier = mock_classifier.get_mock()
+    evaluator = ClassifierEvaluator(classifier, mock_classifier.test)
+    avgRecall = evaluator.microAvgRecall(LABELS)
+
+    print avgRecall
+    assert avgRecall is not None
+    assert _isProbabilityMeasure(avgRecall)
+    assert 0.833 == round(avgRecall, 3)
 
 def _isProbabilityMeasure(candidate):
     return candidate >= 0 and candidate <= 1

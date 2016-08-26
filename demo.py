@@ -22,7 +22,7 @@ def demo(args):
     train_set, dev_set, test_set = split(dataset, shuffle=True)
 
     print "Training classifier ..."
-    classifier = train(train_set) # Must become more modular!
+    classifier = train(train_set)
     print "Finished training."
 
     print "Storing classifier in \"{}\"".format(OUTPUTFILE)
@@ -44,9 +44,18 @@ def demo(args):
         precision_score = evaluator.precision(label)
         fmeasure_score = evaluator.f_measure(label)
 
-        print "Recall for '{}': {}".format(label, recall_score)#{:.2f}".format(label, recall_score)
-        print "Precision for '{}': {}".format(label, precision_score)#{:.2f}".format(label, precision_score)
-        print "F for '{}': {}".format(label, fmeasure_score)#{:.2f}".format(label, fmeasure_score)
+        print "Recall for '{}': {}".format(label, recall_score)
+        print "Precision for '{}': {}".format(label, precision_score)
+        print "F for '{}': {}".format(label, fmeasure_score)
+
+    macroRecall = evaluator.macroAvgRecall(LABELS)
+    macroPrecision = evaluator.macroAvgPrecision(LABELS)
+    microRecall = evaluator.microAvgRecall(LABELS)
+    microPrecision = evaluator.microAvgPrecision(LABELS)
+    print "Macro averaged recall: {}".format(macroRecall)
+    print "Macro averaged precision: {}".format(macroPrecision)
+    print "Micro averaged recall: {}".format(microRecall)
+    print "Micro averaged precision: {}".format(microPrecision)
 
 if __name__ == '__main__':
     import sys
