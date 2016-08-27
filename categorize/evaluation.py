@@ -52,7 +52,9 @@ class ClassifierEvaluator(object):
     def _macroAvg(self, labels, function):
         sumScores = 0
         for label in labels:
-            sumScores = sumScores + function(label)
+            resultOnSingleLabel = function(label)
+            toAdd = resultOnSingleLabel if resultOnSingleLabel is not None else 0
+            sumScores = sumScores + toAdd
 
         if len(labels) > 0:
             return sumScores / len(labels)

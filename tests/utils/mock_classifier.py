@@ -1,4 +1,4 @@
-from textblob.classifiers import NaiveBayesClassifier
+from textblob.classifiers import NaiveBayesClassifier, MaxEntClassifier
 
 data = [('I love this sandwich.', 'pos'),
      ('this is an amazing place!', 'pos'),
@@ -18,5 +18,14 @@ test = [('the beer was good.', 'pos'),
      ('Gary is a friend of mine.', 'pos'),
      ("I can't believe I'm doing this.", 'neg')]
 
+biasedData = [('I love this sandwich.', 'pos'),
+     ('this is an amazing place!', 'pos'),
+     ('I feel very good about these beers.', 'pos'),
+     ('this is my best work.', 'pos'),
+     ("what an awesome view", 'pos')]
+
 def get_mock():
     return NaiveBayesClassifier(data)
+
+def get_biasedMock():
+    return NaiveBayesClassifier(biasedData)

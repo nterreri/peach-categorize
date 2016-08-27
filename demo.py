@@ -7,10 +7,12 @@ from categorize.dataset_splitting import split
 from categorize import develop
 from categorize.evaluation import ClassifierEvaluator
 
-DATAFILE="categorize/data/sample_data.csv"
+SAMPLEDATAFILE="categorize/data/sample_data.csv"
+DATAFILE="categorize/data/NLPresults.csv"
 FORMAT="csv"
 OUTPUTFILE = "categorize/data/classifier.pickle"
-LABELS = ["pos", "neg"]
+SAMPLELABELS = ["pos", "neg"]
+LABELS =["phys", "pract", "family", "emotion", "spiritual"]
 
 def demo(args):
 
@@ -19,7 +21,7 @@ def demo(args):
         dataset = read_data(istream, format=FORMAT)
 
     print "Splitting data set ..."
-    train_set, dev_set, test_set = split(dataset, shuffle=True)
+    train_set, dev_set, test_set = split(dataset, shuffle=False)
 
     print "Training classifier ..."
     classifier = train(train_set)
