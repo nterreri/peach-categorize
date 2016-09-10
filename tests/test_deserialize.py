@@ -1,9 +1,9 @@
-import categorize.classifierDeserializer
+import categorize.classifier_deserializer
 from utils.mock_classifier import get_mock
 
 def test_good():
     classifier = \
-    categorize.classifierDeserializer.deserialize("tests/dump/serialized.pickle")
+    categorize.classifier_deserializer.deserialize("tests/dump/serialized.pickle")
 
     # Label is a property of the nltk.classify.NaiveBayesClassifier class which
     # is not the same class textblob.classifiers.NaiveBayesClassifier.

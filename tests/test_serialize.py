@@ -1,10 +1,10 @@
-import categorize.classifierSerializer
+import categorize.classifier_serializer
 from utils.mock_classifier import get_mock
 from textblob.classifiers import NaiveBayesClassifier
 
 def test_good():
     classifier = get_mock()
-    categorize.classifierSerializer.serialize(classifier, "tests/dump/serialized.pickle")
+    categorize.classifier_serializer.serialize(classifier, "tests/dump/serialized.pickle")
 
     # assert file has content
     import os

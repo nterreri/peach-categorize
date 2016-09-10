@@ -1,7 +1,7 @@
 import pprint
 from categorize.training import train
-from categorize.classifierSerializer import serialize
-from categorize.classifierDeserializer import deserialize
+from categorize.classifier_serializer import serialize
+from categorize.classifier_deserializer import deserialize
 from categorize.dataset_reading import read_data
 from categorize.dataset_splitting import split
 from categorize import develop
